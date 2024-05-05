@@ -1,0 +1,7 @@
+tbody tr:nth-child(-n+3) {
+    background-color: green;
+}
+tr:nth-child(n+4):nth-child(-n+6) {
+    background-color: red;
+}
+img { width: 512px }

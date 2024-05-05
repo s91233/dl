@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EA 1: Bilderkennung mit ml5</title>
+    <script src="p5.min.js"></script>
+    <script src="ml5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="plotly-2.30.0.min.js"></script>
+</head>
+
+<body>
+
+<table border="1">
+  <thead><tr>
+    <th width="512px">Image</th>
+    <th width="512px">Classification</th>
+  </tr></thead>
+  <tbody>
+    <tr><td><img src="img/1.jpg" alt="Image 1"></td><td></td></tr>
+    <tr><td><img src="img/2.jpg" alt="Image 2"></td><td></td></tr>
+    <tr><td><img src="img/3.jpg" alt="Image 3"></td><td></td></tr>
+    <tr><td><img src="img/4.jpg" alt="Image 4"></td><td></td></tr>
+    <tr><td><img src="img/5.jpg" alt="Image 5"></td><td></td></tr>
+    <tr><td><img src="img/6.jpg" alt="Image 6"></td><td></td></tr>
+    <tr>
+      <td id="canvas" align="center">
+          <input type="file" id="input" onchange="upload()">
+          <button onclick="classify()">Classify</button>
+      </td><td></td>
+    </tr>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+
+<script src="script.js"></script>
+
+<p>
+<b>Diskussion</b>:<br>
+    Die Katze wird in Originalgröße richtig eingeordnet, verkleinert nicht.<br>
+<b>Dokumentation</b>:<br>
+<ul>
+    <li>ml5.js zur Klassifikation</li>
+    <li>p5.js für Bilderupload</li>
+    <li>plotly.js für Charts</li>
+</ul>
+<br>Bilder 3&6 sind KI-generiert, Rest aus m5 Beispielen.
+</p>
+    
+</body>
+
+</html>
