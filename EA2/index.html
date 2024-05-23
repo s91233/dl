@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EA 2: Regression mit FFNN</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+</head>
+<body>
+    <div class="table">
+        <div class="column">
+            <div class="row"><div>Daten ohne Rauschen</div><div id="data-original"></div></div>
+            <div class="row"><div>Original Model vs Training Data</div><div id="original-train"></div></div>
+            <div class="row"><div>Best Fit Model vs Training Data</div><div id="best-train"></div></div>
+            <div class="row"><div>Overfit Model vs Training Data</div><div id="overfit-train"></div></div>
+            <div class="row"><div>Uploaded Model vs Original Data</div><div id="uploaded-original"></div></div>
+        </div>
+        <div class="column">
+            <div class="row"><div>Daten mit Rauschen</div><div id="data-noisy"></div></div>
+            <div class="row"><div>Original Model vs Testing Data</div><div id="original-test"></div></div>
+            <div class="row"><div>Best Fit Model vs Testing Data</div><div id="best-test"></div></div>
+            <div class="row"><div>Overfit Model vs Testing Data</div><div id="overfit-test"></div></div>
+            <div class="row"><div>Uploaded Model vs Noisy Data</div><div id="uploaded-noisy"></div></div>
+        </div>
+    </div>
+    <br>
+    <form id="config">
+        <button type="button" onclick="run()">Go!</button><hr>
+        <b>Daten:</b><br><br>
+        <label for="N">N</label><br>
+        <input type="number" id="N" name="N" value="100" min="1">
+        <br><br>
+        <label for="variance">Varianz</label><br>
+        <input type="number" id="variance" name="variance" value="0.05" step="0.01" min="0" max="1">
+        <br><br>
+        <b>Model:</b><br><br>
+        <label for="activation">Aktivierungsfunktion</label><br>
+        <select id="activation" name="activation">
+            <option value="relu">ReLU</option>
+            <option value="elu">ELU</option>
+            <option value="selu">SELU</option>
+            <option value="tanh">Tanh</option>
+            <option value="swish">Swish</option>
+            <option value="linear">Linear</option>
+            <option value="sigmoid">Sigmoid</option>
+            <option value="softmax">Softmax</option>
+            <option value="softplus">Softplus</option>
+            <option value="softsign">Softsign</option>
+        </select>
+        <br><br>
+        <label for="layers">Anzahl hidden Layer und Neuronen pro Layer</label><br>
+        <input type="number" id="layers" name="layers" value="2" min="1">
+        <input type="number" id="neurons" name="neurons" value="100" min="1">
+        <br><br>
+        <label for="optimizer">Optimizer</label><br>
+        <select id="optimizer">
+            <option value="adam">Adam</option>
+            <option value="adamax">Adamax</option>
+            <option value="adagrad">Adagrad</option>
+            <option value="adadelta">Adadelta</option>
+            <option value="rmsprop">RMSProp</option>
+            <option value="sgd">SGD</option>
+        </select>
+        <br><br>
+        <label for="epochs">Epochs, Batch-Size, Learning Rate</label><br>
+        <input type="number" id="epochs" name="epochs" value="200" min="1">
+        <input type="number" id="batch" name="batch" value="32" min="1">
+        <input type="number" id="rate" name="rate" value="0.01" step="0.01" min="0.0">
+        <br><br>
+        <label for="overfit">Overfit</label><br>
+        <input type="number" id="overfit" name="overfit" value="5" min="1">×
+        <br><br><hr><br>
+        <label for="download">Export</label><br>
+        <button type="button" onclick="downloadModel('model-original')">Original</button>
+        <button type="button" onclick="downloadModel('model-noisy-best')">Best</button>
+        <button type="button" onclick="downloadModel('model-noisy-overfit')">Overfit</button>
+        <br><br>
+        <label for="upload">Import</label><br>
+        <input type="file" id="upload" accept=".json" multiple>
+        <button type="button" onclick="uploadModel()">Upload</button>
+        <br><br><br>
+    </form>
+    <script src="script.js"></script>
+    <p>
+    <b>Beobachtungen</b>:<br>
+    <ul>
+        <li>Mit mehr Daten lernte das Modell zuverlässiger und in weniger Epochen</li>
+        <li>Ab etwa 150 Epochen war keine signifikante Verbesserung fesstellbar</li>
+        <li>Zufallsdatenverteilung hat großen Einfluss auf nötige Epochenzahl</li>
+    </ul>
+    <b>Frameworks</b>:<br>
+    <ul>
+        <li>tf.js für ML</li>
+        <li>tf-vis.js zur Visualisierung</li>
+    </ul>
+    </p>
+</body>
+</html>
