@@ -1,0 +1,11 @@
+.table {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+}
+.column {
+    flex-direction: column;
+    display: flex;
+}
+.row {
+    margin: 20px 10px;
+}
