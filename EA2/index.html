@@ -68,18 +68,31 @@
         <input type="number" id="rate" name="rate" value="0.01" step="0.01" min="0.0">
         <br><br>
         <label for="overfit">Overfit</label><br>
-        <input type="number" id="overfit" name="overfit" value="5" min="1">x
+        <input type="number" id="overfit" name="overfit" value="5" min="1">×
         <br><br><hr><br>
-        <label for="download">Download</label><br>
+        <label for="download">Export</label><br>
         <button type="button" onclick="downloadModel('model-original')">Original</button>
         <button type="button" onclick="downloadModel('model-noisy-best')">Best</button>
         <button type="button" onclick="downloadModel('model-noisy-overfit')">Overfit</button>
         <br><br>
-        <label for="upload">Import:</label><br>
+        <label for="upload">Import</label><br>
         <input type="file" id="upload" accept=".json" multiple>
         <button type="button" onclick="uploadModel()">Upload</button>
         <br><br><br>
     </form>
     <script src="script.js"></script>
+    <p>
+    <b>Beobachtungen</b>:<br>
+    <ul>
+        <li>Mit mehr Daten lernte das Modell zuverlässiger und in weniger Epochen</li>
+        <li>Ab etwa 150 Epochen war keine signifikante Verbesserung fesstellbar</li>
+        <li>Zufallsdatenverteilung hat großen Einfluss auf nötige Epochenzahl</li>
+    </ul>
+    <b>Frameworks</b>:<br>
+    <ul>
+        <li>tf.js für ML</li>
+        <li>tf-vis.js zur Visualisierung</li>
+    </ul>
+    </p>
 </body>
 </html>
