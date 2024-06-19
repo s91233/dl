@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "build": "webpack --mode development",
+    "start": "webpack serve --mode development"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.20.0",
+    "@tensorflow/tfjs-vis": "^1.5.1",
+    "fs": "^0.0.1-security",
+    "natural": "^7.0.6",
+    "node-fetch": "^2.7.0",
+    "tf_node_tokenizer": "^1.0.3",
+    "wink-nlp": "^2.3.0",
+    "wink-tokenizer": "^5.3.0"
+  },
+  "devDependencies": {
+    "@tensorflow/tfjs-node": "^4.20.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
