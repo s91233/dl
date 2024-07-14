@@ -1,0 +1,7 @@
+tensorflow==2.15.*
+tensorflowjs
+keras==2.*
+matplotlib
+Requests
+pandas
+numpy

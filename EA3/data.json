@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Romeo & Julia",
+    "path": "data/pg1513.txt",
+    "models": [
+      {
+        "name": "LSTM 1000 epoch",
+        "path": "models/2",
+        "maxSequenceLength": 16
+      },
+      {
+        "name": "Bidirectional(LSTM)",
+        "path": "models/1",
+        "maxSequenceLength": 16
+      },
+      {
+        "name": "FFNN",
+        "path": "models/3",
+        "maxSequenceLength": 16
+      },
+      {
+        "name": "LSTM 200 units",
+        "path": "models/4",
+        "maxSequenceLength": 16
+      },
+      {
+        "name": "LSTM bs=64",
+        "path": "models/5",
+        "maxSequenceLength": 16
+      }
+    ],
+    "examples": [
+      "Henceforth",
+      "My bounty",
+      "O serpent heart"
+    ],
+    "defaultSequenceLength": 16
+  },
+  {
+    "name": "Celsissimus - I (by Arthur Achleitner)",
+    "path": "models/10/text.txt",
+    "defaultSequenceLength": 16,
+    "examples": ["Bürgermeister"],
+    "models": [
+      {
+        "name": "FFNN",
+        "path": "models/10",
+        "maxSequenceLength": 28
+      }
+    ]
+  }
+]

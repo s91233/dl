@@ -1,0 +1,30 @@
+{
+  "validationData": null,
+  "params": {
+    "epochs": "200",
+    "initialEpoch": 0,
+    "samples": 20901,
+    "steps": null,
+    "batchSize": 64,
+    "verbose": 1,
+    "doValidation": false,
+    "metrics": [
+      "loss",
+      "categoricalAccuracy"
+    ]
+  },
+  "epoch": [
+    0
+  ],
+  "history": {
+    "loss": [
+      0.0
+    ],
+    "categoricalAccuracy": [
+      0.0
+    ],
+    "accuracy": [
+      0.0
+    ]
+  }
+}

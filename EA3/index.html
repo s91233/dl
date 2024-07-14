@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EA3</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TensorFlow -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/terminal.css/dist/terminal.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+        /* Custom styles if needed */
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="column main">
+            <!-- Form Section -->
+            <form id="text-input-form">
+                <!-- User Input Form Group -->
+                <fieldset>
+                    <div class="form-group">
+                        <button type="button" id="reset-btn" class="btn btn-error">Reset</button>
+                        <button type="button" id="auto-btn" class="btn btn-primary btn-ghost">Auto</button>
+                        <button type="button" id="stop-btn" class="btn btn-error btn-ghost" style="display: none;">Stop</button>
+                        <button type="button" id="continue-btn" class="btn btn-primary">Weiter</button>
+                        <button type="button" id="predict-btn" class="btn btn-default">Vorhersage</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-input">Text:</label>
+                        <textarea id="user-input" name="user-input" required></textarea>
+                    </div>
+                </fieldset>
+                <!-- Predictions Table -->
+                <fieldset>
+                    <legend>Vorhersagen</legend>
+                    <table class="predictions-table">
+                        <colgroup>
+                            <col style="width:50%">
+                            <col style="width:50%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>Wort</th>
+                            <th>Wahrscheinlichkeit</th>
+                        </tr>
+                        </thead>
+                        <tbody id="predictions-table">
+                        </tbody>
+                    </table>
+                    <div class="terminal-alert">Perplexity: <span id="perplexity">0</span></div>
+                </fieldset>
+                <!-- Examples List -->
+                <fieldset>
+                    <legend>Beispiele</legend>
+                    <div id="examples"></div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="column sidebar">
+            <!-- Model Selection -->
+            <fieldset>
+                <div class="form-group">
+                    <label for="input-select">Text</label>
+                    <select id="input-select" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="model-select">Model</label>
+                    <select id="model-select" class="form-control"></select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Ebenen</legend>
+                <div id="model-info" class="terminal-window"></div>
+            </fieldset>
+            <fieldset>
+                <legend>History</legend>
+                <canvas id="history" class="chart" width="100%"></canvas>
+            </fieldset>
+            <!-- Settings Form Group -->
+            <fieldset>
+                <legend>Einstellungen</legend>
+                <div class="form-group">
+                    <label for="num-preds">Vorhersagen &#119899;:</label>
+                    <input type="number" id="num-preds" name="num-preds" required value="5">
+                </div>
+                <div class="form-group">
+                    <label for="num-words">Wörter &#119899;:</label>
+                    <input type="number" id="num-words" name="num-words" required value="10">
+                </div>
+                <div class="form-group">
+                    <label for="max-sequence">Sequenzlänge:</label>
+                    <input type="number" id="max-sequence" name="max-sequence" required disabled>
+                </div>
+            </fieldset>
+            <!--
+            <fieldset>
+                <legend>Training</legend>
+                <div class="form-group">
+                    <button type="button" class="btn btn-ghost" id="train" disabled onclick="alert('TBD')">Run</button>
+                </div>
+            </fieldset>
+            -->
+        </div>
+    </div>
+    <hr>
+    <div>
+        <h1 class="headline">Dokumentation</h1>
+        <h2>Technisch:</h2>
+        <ul>
+            <li>Textvorbereitung:
+                <ul>
+                    <li>Der Text wurde gereinigt <code>[^a-zA-Z.:;—?!]</code> und in Zeilen aufgeteilt.</li>
+                    <li>Ein Index-zu-Wort-Wörterbuch wurde mithilfe eines Tokenizers generiert.</li>
+                </ul>
+            </li>
+            <li>Sequenzierung:
+                <ul>
+                    <li>Die Zeilen wurden in N-Grammen Sequenzen von Ganzzahlen umgewandelt.</li>
+                    <li>Alle Sequenzen wurden von links auf die Länge der längsten Sequenz mit 0 gepolstert.</li>
+                </ul>
+            </li>
+            <li>Zieldefinition:
+                <ul>
+                    <li>Das letzte "Wort" (das letzte Element der Sequenz) wird als Ziel definiert.</li>
+                </ul>
+            </li>
+            <li>Vorhersage:
+                <ul>
+                    <li>Die letzten n = Sequenzlänge Wörter aus der Benutzereingabe werden in eine Sequenz für das Modell umgewandelt, kürzere Sequenzen werden gepolstert.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Fachlich:</h2>
+        <ul>
+            <li><a href="https://github.com/tensorflow/tfjs">TensorFlow.js</a></li>
+            <li><a href="https://github.com/Shadowhusky/node_tokenizer">tf_node_tokenizer</a></li>
+            <li><a href="https://github.com/Gioni06/terminal.css/">Terminal.css</a></li>
+            <li><a href="https://github.com/chartjs/Chart.js">Chart.js</a></li>
+            <li><a href="https://github.com/webpack/webpack">Webpack</a></li>
+        </ul>
+    </div>
+</div>
+<!-- Your Script -->
+<script src="./index.js"></script>
+</body>
+</html>

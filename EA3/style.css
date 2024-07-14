@@ -1,0 +1,63 @@
+.row, .form-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+.column {
+    flex: 1;
+    padding: 10px;
+    min-width: 300px;
+}
+.btn {
+    width: 50%;
+    flex: 1 1 auto;
+}
+body {
+    background-color: #f1f1f1;
+}
+@media (max-width: 600px) {
+    .column {
+        flex-basis: 100%;
+    }
+    body {
+        font-size: smaller;
+    }
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &:first-child {
+        text-align: left;
+    }
+    &:last-child {
+        text-align: right;
+    }
+}
+fieldset {
+    border: 2px solid;
+    margin-bottom: 10px;
+    background-color: #e1e1e1;
+}
+button:disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+textarea {
+    overflow-y: hidden;
+}
+.predictions-table {
+    table-layout: fixed;
+}
+select {
+    text-overflow: ellipsis;
+}
+#perplexity {
+    float: right;
+}
+#examples ul, ol {
+    margin-top: auto;
+    margin-bottom: auto;
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "1",
+    "path": "models/1",
+    "maxSequenceLength": 16
+  },
+  {
+    "name": "2",
+    "path": "models/2",
+    "maxSequenceLength": 16
+  },
+  {
+    "name": "3",
+    "path": "models/3",
+    "maxSequenceLength": 16
+  },
+  {
+    "name": "4",
+    "path": "models/4",
+    "maxSequenceLength": 16
+  },
+  {
+    "name": "5",
+    "path": "models/5",
+    "maxSequenceLength": 16
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "build": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "serve": "webpack serve --mode development"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.20.0",
+    "@tensorflow/tfjs-vis": "^1.5.1",
+    "tf_node_tokenizer": "^1.0.3"
+  },
+  "devDependencies": {
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "optionalDependencies": {
+    "@tensorflow/tfjs-node-gpu": "^4.20.0",
+    "@tensorflow/tfjs-node": "^4.20.0",
+    "csv-writer": "^1.6.0",
+    "fs": "^0.0.1-security",
+    "jest": "^29.7.0",
+    "node-fetch": "^2.7.0",
+    "tfjs_ports": "file:packages/tfjs_ports"
+  }
+}
